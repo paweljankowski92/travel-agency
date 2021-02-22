@@ -12,6 +12,7 @@ import settings from '../../../data/settings';
 
 const sendOrder = (options, tripCost, tripId, tripName, tripCountry) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
+  const {name, contact} = options;
 
   const payload = {
     ...options,
@@ -20,6 +21,11 @@ const sendOrder = (options, tripCost, tripId, tripName, tripCountry) => {
     tripName,
     tripCountry,
   };
+
+  if (name === '' || contact === '') {
+    alert('Please complete name and contact');
+    return;
+  }
 
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
 
