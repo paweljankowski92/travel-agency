@@ -4,9 +4,11 @@ import styles from './OrderOption.scss';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 const OrderOptionDate = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setOptionValue] = useState(new Date());
   return (
-    <DatePicker className={styles.input} selected={startDate} onChange={date => setStartDate(date)} />
+    <div>
+      <DatePicker type="date" className={styles.input} selected={startDate} onChange={date => setOptionValue(date)} />
+    </div>
   );
 };
 
